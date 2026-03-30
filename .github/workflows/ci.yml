@@ -10,6 +10,9 @@ jobs:
   build-and-test:
     runs-on: ubuntu-latest
 
+    env:
+      DATABASE_URL: sqlite:///./orders.db
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

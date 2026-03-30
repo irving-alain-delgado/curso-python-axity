@@ -1,0 +1,48 @@
+# Entornos virtuales
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.mypy_cache/
+.pytest_cache/
+.coverage
+
+# Poetry
+poetry.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Pre-commit
+.tox/
+
+# Archivos de entorno
+.env
+*.env
+
+# Archivos de configuración local
+*.local
+
+# Directorios de construcción
+dist/
+build/
+*.egg-info/
+
+# Archivos de caché de Ruff
+.ruff_cache/
+
+# Archivos de pruebas
+.coverage
+htmlcov/
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
