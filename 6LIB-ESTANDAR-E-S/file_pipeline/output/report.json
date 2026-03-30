@@ -1,0 +1,9 @@
+{
+  "timestamp": "2026-03-25T05:09:16.221718+00:00",
+  "total_records": 3,
+  "totals_by_category": {
+    "tech": 200.0,
+    "food": 150.0,
+    "books": 50.0
+  }
+}

@@ -1,0 +1,26 @@
+[project]
+name = "ds-lab"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "IRVING DELGADO",email = "irving.delgado@axity.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pandas (>=3.0.1,<4.0.0)",
+    "scikit-learn (>=1.8.0,<2.0.0)",
+    "joblib (>=1.5.3,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "ds_lab", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.2,<10.0.0)"
+]

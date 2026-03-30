@@ -1,0 +1,19 @@
+[project]
+name = "order-system"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "IRVING DELGADO",email = "irving.delgado@axity.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pydantic (>=2.12.5,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "order_system", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

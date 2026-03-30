@@ -1,0 +1,27 @@
+[project]
+name = "secure-api"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "IRVING DELGADO",email = "irving.delgado@axity.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12,<4.0"
+dependencies = [
+    "fastapi (>=0.135.2,<0.136.0)",
+    "uvicorn (>=0.42.0,<0.43.0)",
+    "pydantic-settings (>=2.13.1,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "secure_api", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pip-audit (>=2.10.0,<3.0.0)",
+    "safety (>=3.7.0,<4.0.0)"
+]

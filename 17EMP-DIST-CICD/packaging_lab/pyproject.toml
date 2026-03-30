@@ -1,0 +1,27 @@
+[project]
+name = "packaging-lab"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "IRVING DELGADO",email = "irving.delgado@axity.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi (>=0.135.2,<0.136.0)",
+    "uvicorn (>=0.42.0,<0.43.0)"
+]
+
+[tool.poetry]
+packages = [{include = "packaging_lab", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "pytest (>=9.0.2,<10.0.0)",
+    "ruff (>=0.15.8,<0.16.0)",
+    "mypy (>=1.19.1,<2.0.0)"
+]

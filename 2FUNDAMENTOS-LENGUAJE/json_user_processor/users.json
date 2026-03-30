@@ -1,0 +1,6 @@
+[
+  {"name": "Ana", "age": 25, "email": "ana@email.com", "type": "admin", "active": true},
+  {"name": "Luis", "age": 17, "email": "luis-email.com", "type": "user", "active": true},
+  {"name": "Marta", "age": 30, "email": "marta@email.com", "type": "moderator", "active": false},
+  {"name": "Carlos", "age": 22, "email": "carlos@email.com", "type": "user", "active": true}
+]

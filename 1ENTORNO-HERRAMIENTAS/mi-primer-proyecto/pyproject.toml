@@ -1,0 +1,36 @@
+[project]
+name = "mi-primer-proyecto"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "IRVING DELGADO",email = "irving.delgado@axity.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+]
+
+[tool.poetry]
+packages = [{include = "mi_primer_proyecto", from = "src"}]
+
+[tool.black]
+line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.ruff]
+line-length = 120
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "black (>=26.3.0,<27.0.0)",
+    "isort (>=8.0.1,<9.0.0)",
+    "ruff (>=0.15.5,<0.16.0)",
+    "pre-commit (>=4.5.1,<5.0.0)"
+]

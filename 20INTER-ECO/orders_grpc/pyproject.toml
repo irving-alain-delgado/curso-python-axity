@@ -1,0 +1,21 @@
+[project]
+name = "orders-grpc"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "IRVING DELGADO",email = "irving.delgado@axity.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "grpcio (>=1.78.0,<2.0.0)",
+    "grpcio-tools (>=1.78.0,<2.0.0)",
+    "pika (>=1.3.2,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "orders_grpc", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
