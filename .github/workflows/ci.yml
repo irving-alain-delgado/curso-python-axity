@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Poetry
+        run: pip install poetry
+
+      - name: Install dependencies
+        run: |
+          cd PROYECTO-FINAL/orders_service
+          poetry config virtualenvs.create false
+          poetry install --no-interaction --no-ansi
+
+      - name: Run Ruff
+        run: |
+          cd PROYECTO-FINAL/orders_service
+          poetry run ruff check .
+
+      - name: Run MyPy
+        run: |
+          cd PROYECTO-FINAL/orders_service
+          poetry run mypy src
+
+      - name: Run Tests
+        run: |
+          cd PROYECTO-FINAL/orders_service
+          poetry run pytest --cov
+
+      - name: Run Security Audit
+        run: |
+          cd PROYECTO-FINAL/orders_service
+          poetry run pip-audit
