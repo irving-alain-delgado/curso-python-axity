@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime, UTC
 from uuid import uuid4
-
+from orders_service.domain.exceptions import InvalidQuantityError
 
 @dataclass
 class Order:
@@ -14,7 +14,7 @@ class Order:
     @staticmethod
     def create(user_id: str, product: str, quantity: int) -> "Order":
         if quantity <= 0:
-            raise ValueError("Quantity must be greater than zero")
+            raise InvalidQuantityError("Quantity must be greater than zero")
 
         return Order(
             id=str(uuid4()),

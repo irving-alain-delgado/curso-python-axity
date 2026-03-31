@@ -7,7 +7,12 @@ from orders_service.infrastructure.db.repository_sqlalchemy import SQLAlchemyOrd
 from orders_service.infrastructure.messaging.dummy_publisher import DummyEventPublisher
 # from orders_service.infrastructure.db import models
 from orders_service.infrastructure.config import settings
-
+from sqlalchemy.orm import Session
+from typing import Generator
+import logging
+from orders_service.domain.exceptions import DomainError
+from fastapi import Request
+from fastapi.responses import JSONResponse
 # Crear tablas (solo desarrollo)
 # Base.metadata.create_all(bind=engine)
 
@@ -28,13 +33,31 @@ class OrderResponse(BaseModel):
     status: str
 
 
+def get_db() -> Generator[Session, None, None]:
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()
+
+
 # -------- Dependency Injection --------
 
-def get_use_case():
-    session = SessionLocal()
-    repo = SQLAlchemyOrderRepository(session)
+def get_use_case(db: Session = Depends(get_db)):
+    repo = SQLAlchemyOrderRepository(db)
     publisher = DummyEventPublisher()
     return CreateOrderUseCase(repo, publisher)
+
+
+# -------- Exceptions --------
+
+@app.exception_handler(DomainError)
+async def domain_exception_handler(request: Request, exc: DomainError):
+    return JSONResponse(
+        status_code=400,
+        content={"detail": str(exc)},
+    )
+
 
 
 # -------- Routes --------
@@ -59,3 +82,12 @@ def create_order(
         id=order.id,
         status="CREATED",
     )
+
+
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
+)
+
+logger = logging.getLogger(__name__)
